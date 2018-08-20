@@ -1,0 +1,14 @@
+{
+  "name": "chipbot",
+  "version": "1.0.0",
+  "description": "discord port of the IRC chipbot for chiptunes=win",
+  "main": "index.js",
+  "author": "bclindner",
+  "license": "MIT",
+  "dependencies": {
+    "bufferutil": "^3.0.3",
+    "discord.js": "^11.4.2",
+    "erlpack": "discordapp/erlpack",
+    "lowdb": "^1.0.0"
+  }
+}
