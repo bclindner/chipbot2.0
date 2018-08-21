@@ -1,0 +1,10 @@
+{
+  "dbFile": "./db.json",
+  "defaults": {
+    "subjects": {
+      "otherm": -1000,
+      "chiptunes": 1000,
+      "chiptune": 1000
+    }
+  }
+}
