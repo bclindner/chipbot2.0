@@ -46,13 +46,13 @@ function handleKarma (msg) {
         if (karma.upvote(subject)) {
           points = karma.check(subject)
         }
-        msg.reply('upvote successful: ' + subject + 'now has ' + points + ' karma.')
+        msg.reply('upvote successful: ' + subject + ' now has ' + points + ' karma.')
         break
       case '--':
         if (karma.downvote(subject)) {
           points = karma.check(subject)
         }
-        msg.reply('downvote successful: ' + subject + 'now has ' + points + ' karma.')
+        msg.reply('downvote successful: ' + subject + ' now has ' + points + ' karma.')
         break
       case '~~':
         points = karma.check(subject)
