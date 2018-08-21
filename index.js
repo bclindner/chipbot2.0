@@ -17,7 +17,7 @@ db.defaults({
 }).write()
 
 // set up karma system
-const KarmaManager = require('./lib/karma.js')
+const KarmaManager = require('./lib/KarmaManager.js')
 const karma = new KarmaManager(karmaConfig, db)
 
 // set up the bot
