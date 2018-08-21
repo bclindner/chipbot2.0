@@ -1,6 +1,6 @@
 # chipbot2
 
-**chipbot2** is a Discord port of the original IRC-based (chipbot)[https://github.com/arcticmetal/chipbot], written in Node.js.
+**chipbot2** is a Discord port of the original IRC-based [chipbot](https://github.com/arcticmetal/chipbot), written in Node.js.
 
 At current, it only maintains the old bot's most popular features.
 
