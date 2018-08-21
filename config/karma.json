@@ -1,5 +1,4 @@
 {
-  "dbFile": "./db.json",
   "defaults": {
     "subjects": {
       "otherm": -1000,
