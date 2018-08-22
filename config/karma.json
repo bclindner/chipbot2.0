@@ -1,9 +1,28 @@
 {
   "defaults": {
-    "subjects": {
-      "otherm": -1000,
-      "chiptunes": 1000,
-      "chiptune": 1000
+    "otherm": {
+      "karma": -1000,
+      "canUpvote": false
+    },
+    "chipbot": {
+      "karma": 1000,
+      "canUpvote": true
+    },
+    "chiptunes": {
+      "karma": 1000,
+      "canUpvote": true
+    },
+    "chiptune": {
+      "karma": 1000,
+      "canUpvote": true
+    },
+    "chiptuneswin": {
+      "karma": 1000,
+      "canUpvote": true
+    },
+    "chipwin": {
+      "karma": 1000,
+      "canUpvote": true
     }
   }
 }
