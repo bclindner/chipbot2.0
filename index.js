@@ -11,11 +11,6 @@ const FileSync = require('lowdb/adapters/FileSync')
 const adapter = new FileSync('./db.json')
 const db = low(adapter)
 
-// create the db structure if it doesn't exist
-db.defaults({
-  karma: karmaConfig.defaults
-}).write()
-
 // set up karma system
 const KarmaManager = require('./lib/KarmaManager.js')
 const karma = new KarmaManager(karmaConfig, db)
