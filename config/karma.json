@@ -22,7 +22,18 @@
       "name": "otherm",
       "points": -1000,
       "canUpvote": false,
-      "canDownvote": true
+      "canDownvote": true,
+      "ridicule": [
+        "No.",
+        "You are not authorized to upvote Other M.",
+        "Why would I do that?",
+        "What's wrong with you?",
+        "Did you say something?",
+        "Oh yeah, you think you're REALLY clever, don't you?",
+        "You're the reason why we can't have nice things.",
+        "Does not compute.",
+        "THEM'S FIGHTIN' WORDS."
+      ]
     }
   ]
 }

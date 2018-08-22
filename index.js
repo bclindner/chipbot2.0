@@ -44,7 +44,13 @@ function karmaVoting (msg) {
           subject.upvote()
           msg.reply('upvote successful: ' + subject.name + ' now has ' + subject.points + ' karma.')
         } else {
-          msg.reply('you can\'t upvote that!')
+          // if there is ridicule, then ridicule them
+          if (subject.canRidicule) {
+            msg.reply(subject.getRandomRidicule())
+          } else {
+            // otherwise just get the generic line
+            msg.reply('you can\'t downvote that!')
+          }
         }
         break
       case '--':
@@ -52,7 +58,13 @@ function karmaVoting (msg) {
           subject.downvote()
           msg.reply('downvote successful: ' + subject.name + ' now has ' + subject.points + ' karma.')
         } else {
-          msg.reply('you can\'t downvote that!')
+          // if there is ridicule, then ridicule them
+          if (subject.canRidicule) {
+            msg.reply(subject.getRandomRidicule())
+          } else {
+            // otherwise just get the generic line
+            msg.reply('you can\'t downvote that!')
+          }
         }
         break
       case '~~':
