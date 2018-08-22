@@ -41,16 +41,24 @@ function karmaVoting (msg) {
     // determine what to do given the symbol
     switch (symbol) {
       case '++':
-        if (karma.upvote(subject)) {
-          points = karma.check(subject)
+        if (karma.canUpvote(subject)) {
+          if (karma.upvote(subject)) {
+            points = karma.check(subject)
+            msg.reply('upvote successful: ' + subject + ' now has ' + points + ' karma.')
+          }
+        } else {
+          msg.reply('you can\'t upvote that!')
         }
-        msg.reply('upvote successful: ' + subject + ' now has ' + points + ' karma.')
         break
       case '--':
-        if (karma.downvote(subject)) {
-          points = karma.check(subject)
+        if (karma.canDownvote(subject)) {
+          if (karma.downvote(subject)) {
+            points = karma.check(subject)
+            msg.reply('downvote successful: ' + subject + ' now has ' + points + ' karma.')
+          }
+        } else {
+          msg.reply('you can\'t downvote that!')
         }
-        msg.reply('downvote successful: ' + subject + ' now has ' + points + ' karma.')
         break
       case '~~':
         points = karma.check(subject)
@@ -65,7 +73,7 @@ let maxSubjectsToGet = 10
 function karmaRankings (msg) {
   // use regex to determine if the message content matches the following format:
   // .top <number from 0 to 100>
-  const regex = /^\.(top|bottom) ([0-9]+)$/g
+  const regex = /^\.(top|bottom) [0-9]+$/g
   if (regex.test(msg.content)) {
     let numOfSubjects = msg.content.split(' ')[1]
     let topOrBottom = (msg.content.split(' ')[0].slice(1))
