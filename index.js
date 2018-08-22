@@ -18,6 +18,9 @@ const karma = new KarmaManager(karmaConfig, db)
 // set up the bot
 const bot = new Discord.Client()
 
+db.defaults({
+  karma: karmaConfig.defaults
+}).write()
 // log that we signed in
 bot.on('ready', () => {
   console.log(`logged in as ${bot.user.tag}`)
