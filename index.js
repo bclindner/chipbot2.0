@@ -75,6 +75,7 @@ function karmaVoting (msg) {
     }
   }
 }
+// karma rankings
 let maxSubjectsToGet = 10
 function karmaRankings (msg) {
   // use regex to determine if the message content matches the following format:
