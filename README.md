@@ -22,3 +22,14 @@ To upvote or downvote a subject, respectively:
 subject++
 subject--
 ```
+
+You can also check the top and bottom subjects using:
+
+```
+.top [1-10]
+.bottom [1-10]
+```
+
+If no number is specified for these commands, it automatically gets the top 5.
+
+You can only get up to 10 top and bottom subjects, to prevent the bot from textwalling.
