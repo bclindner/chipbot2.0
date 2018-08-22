@@ -27,11 +27,11 @@ bot.on('ready', () => {
 })
 
 // karma module
-function handleKarma (msg) {
+function karmaVoting (msg) {
   // use regex to determine if the message content matches the following format:
   // (1 or more alphanumeric characters)(++ or -- or ~~)
-  const karmaRegex = /^[A-z0-9]+(\+\+|--|~~)$/g
-  if (karmaRegex.test(msg.content)) {
+  const regex = /^[A-z0-9]+(\+\+|--|~~)$/g
+  if (regex.test(msg.content)) {
     // isolate the subject being upvoted/downvoted and the symbol at the end
     let symbol = msg.content.slice(-2) // symbol at the end (the ++/--/~~)
     let subject = msg.content.slice(0, -2).toLowerCase() // the subject, in all lowercase
@@ -41,16 +41,24 @@ function handleKarma (msg) {
     // determine what to do given the symbol
     switch (symbol) {
       case '++':
-        if (karma.upvote(subject)) {
-          points = karma.check(subject)
+        if (karma.canUpvote(subject)) {
+          if (karma.upvote(subject)) {
+            points = karma.check(subject)
+            msg.reply('upvote successful: ' + subject + ' now has ' + points + ' karma.')
+          }
+        } else {
+          msg.reply('you can\'t upvote that!')
         }
-        msg.reply('upvote successful: ' + subject + ' now has ' + points + ' karma.')
         break
       case '--':
-        if (karma.downvote(subject)) {
-          points = karma.check(subject)
+        if (karma.canDownvote(subject)) {
+          if (karma.downvote(subject)) {
+            points = karma.check(subject)
+            msg.reply('downvote successful: ' + subject + ' now has ' + points + ' karma.')
+          }
+        } else {
+          msg.reply('you can\'t downvote that!')
         }
-        msg.reply('downvote successful: ' + subject + ' now has ' + points + ' karma.')
         break
       case '~~':
         points = karma.check(subject)
@@ -61,6 +69,38 @@ function handleKarma (msg) {
     }
   }
 }
-bot.on('message', handleKarma)
+let maxSubjectsToGet = 10
+function karmaRankings (msg) {
+  // use regex to determine if the message content matches the following format:
+  // .top <number from 0 to 100>
+  const regex = /^\.(top|bottom) [0-9]+$/g
+  if (regex.test(msg.content)) {
+    let numOfSubjects = msg.content.split(' ')[1]
+    let topOrBottom = (msg.content.split(' ')[0].slice(1))
+    let resp = ''
+    let subjects = []
+
+    // test: is number of subjects going to potentially flood the server?
+    if (numOfSubjects > maxSubjectsToGet) {
+      // throw an error to the user and deny them
+      msg.reply('can\'t list that many!')
+      return
+    }
+    if (topOrBottom === 'top') {
+      subjects = karma.getTop(numOfSubjects)
+    } else if (topOrBottom === 'bottom') {
+      subjects = karma.getBottom(numOfSubjects)
+    } else {
+      msg.react('⚠️') // warning sign - this shouldn't be possible
+    }
+    resp += 'the ' + topOrBottom + ' ' + subjects.length + ' subjects are:\n'
+    for (let i = 0; i < subjects.length; i++) {
+      resp += subjects[i].subject + ': ' + subjects[i].karma + '\n'
+    }
+    msg.reply(resp)
+  }
+}
+bot.on('message', karmaVoting)
+bot.on('message', karmaRankings)
 
 bot.login(botConfig.token)
