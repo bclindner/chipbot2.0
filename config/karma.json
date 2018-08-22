@@ -1,28 +1,28 @@
 {
-  "defaults": {
-    "otherm": {
+  "defaults": [
+    {
+      "subject": "chiptune",
+      "karma": 1001,
+      "canUpvote": true,
+      "canDownvote": false
+    },
+    {
+      "subject": "chiptunes",
+      "karma": 1000,
+      "canUpvote": true,
+      "canDownvote": false
+    },
+    {
+      "subject": "chiptuneswin",
+      "karma": 1000,
+      "canUpvote": true,
+      "canDownvote": false
+    },
+    {
+      "subject": "otherm",
       "karma": -1000,
-      "canUpvote": false
-    },
-    "chipbot": {
-      "karma": 1000,
-      "canUpvote": true
-    },
-    "chiptunes": {
-      "karma": 1000,
-      "canUpvote": true
-    },
-    "chiptune": {
-      "karma": 1000,
-      "canUpvote": true
-    },
-    "chiptuneswin": {
-      "karma": 1000,
-      "canUpvote": true
-    },
-    "chipwin": {
-      "karma": 1000,
-      "canUpvote": true
+      "canUpvote": false,
+      "canDownvote": true
     }
-  }
+  ]
 }
