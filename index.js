@@ -27,11 +27,11 @@ bot.on('ready', () => {
 })
 
 // karma module
-function handleKarma (msg) {
+function karmaVoting (msg) {
   // use regex to determine if the message content matches the following format:
   // (1 or more alphanumeric characters)(++ or -- or ~~)
-  const karmaRegex = /^[A-z0-9]+(\+\+|--|~~)$/g
-  if (karmaRegex.test(msg.content)) {
+  const regex = /^[A-z0-9]+(\+\+|--|~~)$/g
+  if (regex.test(msg.content)) {
     // isolate the subject being upvoted/downvoted and the symbol at the end
     let symbol = msg.content.slice(-2) // symbol at the end (the ++/--/~~)
     let subject = msg.content.slice(0, -2).toLowerCase() // the subject, in all lowercase
@@ -61,6 +61,31 @@ function handleKarma (msg) {
     }
   }
 }
-bot.on('message', handleKarma)
+function karmaRankings (msg) {
+  // use regex to determine if the message content matches the following format:
+  // .top <number from 0 to 100>
+  const regex = /^\.(top|bottom) ([0-9]+)$/g
+  if (regex.test(msg.content)) {
+    let numOfSubjects = msg.content.split(' ')[1]
+    let topOrBottom = (msg.content.split(' ')[0].slice(1))
+    let resp = '\n'
+    if (topOrBottom === 'top') {
+      let subjects = karma.getTop(numOfSubjects)
+      for (let i = 0; i < subjects.length; i++) {
+        resp += subjects[i].subject + ': ' + subjects[i].karma + '\n'
+      }
+    } else if (topOrBottom === 'bottom') {
+      let subjects = karma.getBottom(numOfSubjects)
+      for (let i = 0; i < subjects.length; i++) {
+        resp += subjects[i].subject + ': ' + subjects[i].karma + '\n'
+      }
+    } else {
+      msg.react('⚠️') // warning sign - this shouldn't be possible
+    }
+    msg.reply(resp)
+  }
+}
+bot.on('message', karmaVoting)
+bot.on('message', karmaRankings)
 
 bot.login(botConfig.token)
