@@ -77,21 +77,23 @@ function karmaVoting (msg) {
 }
 // karma rankings
 let maxSubjectsToGet = 10
+let defaultSubjectsToGet = 5
 function karmaRankings (msg) {
   // use regex to determine if the message content matches the following format:
   // .top <number from 0 to 100>
-  const regex = /^\.(top|bottom) [0-9]+$/g
+  const regex = /^\.(top|bottom) ?[0-9]*$/g
   if (regex.test(msg.content)) {
     let numOfSubjects = msg.content.split(' ')[1]
     let topOrBottom = (msg.content.split(' ')[0].slice(1))
     let resp = ''
     let subjects = []
-
     // test: is number of subjects going to potentially flood the server?
     if (numOfSubjects > maxSubjectsToGet) {
       // throw an error to the user and deny them
       msg.reply('can\'t list that many!')
       return
+    } else if (numOfSubjects === undefined) {
+      numOfSubjects = defaultSubjectsToGet
     }
     if (topOrBottom === 'top') {
       subjects = karma.getTop(numOfSubjects)
@@ -102,7 +104,7 @@ function karmaRankings (msg) {
     }
     resp += 'the ' + topOrBottom + ' ' + subjects.length + ' subjects are:\n'
     for (let i = 0; i < subjects.length; i++) {
-      resp += subjects[i].subject + ': ' + subjects[i].karma + '\n'
+      resp += subjects[i].name + ': ' + subjects[i].points + '\n'
     }
     msg.reply(resp)
   }
