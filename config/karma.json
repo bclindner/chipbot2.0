@@ -1,26 +1,26 @@
 {
   "defaults": [
     {
-      "subject": "chiptune",
-      "karma": 1001,
+      "name": "chiptune",
+      "points": 1001,
       "canUpvote": true,
       "canDownvote": false
     },
     {
-      "subject": "chiptunes",
-      "karma": 1000,
+      "name": "chiptunes",
+      "points": 1000,
       "canUpvote": true,
       "canDownvote": false
     },
     {
-      "subject": "chiptuneswin",
-      "karma": 1000,
+      "name": "chiptuneswin",
+      "points": 1000,
       "canUpvote": true,
       "canDownvote": false
     },
     {
-      "subject": "otherm",
-      "karma": -1000,
+      "name": "otherm",
+      "points": -1000,
       "canUpvote": false,
       "canDownvote": true
     }

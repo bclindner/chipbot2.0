@@ -34,35 +34,29 @@ function karmaVoting (msg) {
   if (regex.test(msg.content)) {
     // isolate the subject being upvoted/downvoted and the symbol at the end
     let symbol = msg.content.slice(-2) // symbol at the end (the ++/--/~~)
-    let subject = msg.content.slice(0, -2).toLowerCase() // the subject, in all lowercase
-    let points // this variable will hold our points for reply later
-    // if the subject does not exist, create it
-    karma.create(subject)
+    let subjectName = msg.content.slice(0, -2).toLowerCase() // the subject, in all lowercase
+    // get our subject object
+    let subject = karma.get(subjectName)
     // determine what to do given the symbol
     switch (symbol) {
       case '++':
-        if (karma.canUpvote(subject)) {
-          if (karma.upvote(subject)) {
-            points = karma.check(subject)
-            msg.reply('upvote successful: ' + subject + ' now has ' + points + ' karma.')
-          }
+        if (subject.canUpvote) {
+          subject.upvote()
+          msg.reply('upvote successful: ' + subject.name + ' now has ' + subject.points + ' karma.')
         } else {
           msg.reply('you can\'t upvote that!')
         }
         break
       case '--':
-        if (karma.canDownvote(subject)) {
-          if (karma.downvote(subject)) {
-            points = karma.check(subject)
-            msg.reply('downvote successful: ' + subject + ' now has ' + points + ' karma.')
-          }
+        if (subject.canDownvote) {
+          subject.downvote()
+          msg.reply('downvote successful: ' + subject.name + ' now has ' + subject.points + ' karma.')
         } else {
           msg.reply('you can\'t downvote that!')
         }
         break
       case '~~':
-        points = karma.check(subject)
-        msg.reply(subject + ' has ' + karma.check(subject) + ' karma.')
+        msg.reply(subject.name + ' has ' + subject.points + ' karma.')
         break
       default:
         break
