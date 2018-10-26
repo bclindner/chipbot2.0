@@ -17,11 +17,15 @@ const CommandHandler = require('./lib/CommandHandler')
 const KarmaVoting = require('./lib/KarmaCommands').KarmaVoting
 const KarmaRankings = require('./lib/KarmaCommands').KarmaRankings
 const Emotes = require('./lib/EmoteCommand')
+const GetQuote = require('./lib/QuoteCommands').GetQuote
+const AddQuote = require('./lib/QuoteCommands').AddQuote
 
 const handler = new CommandHandler(bot)
 handler.register(new KarmaVoting(db))
 handler.register(new KarmaRankings(db))
 handler.register(new Emotes(path.resolve('./config/emotes')))
+handler.register(new GetQuote(db))
+handler.register(new AddQuote(db))
 
 // log that we signed in
 bot.on('ready', () => {

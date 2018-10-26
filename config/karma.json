@@ -19,6 +19,15 @@
       "canDownvote": false
     },
     {
+      "name": "chipbot",
+      "points": 1000,
+      "canUpvote": true,
+      "canDownvote": false,
+      "ridicule": [
+        "rude!"
+      ]
+    },
+    {
       "name": "otherm",
       "points": -1000,
       "canUpvote": false,
