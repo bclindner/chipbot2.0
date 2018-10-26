@@ -8,11 +8,12 @@ const botConfig = require('./config/bot.json')
 const bot = new Discord.Client()
 
 const CommandHandler = require('./lib/CommandHandler')
-const KarmaCommands = require('./lib/KarmaCommands')
+const KarmaVoting = require('./lib/KarmaCommands').KarmaVoting
+const KarmaRankings = require('./lib/KarmaCommands').KarmaRankings
 
 const handler = new CommandHandler(bot)
-handler.register(KarmaCommands.KarmaVoting)
-handler.register(KarmaCommands.KarmaRankings)
+handler.register(new KarmaVoting())
+handler.register(new KarmaRankings())
 
 // log that we signed in
 bot.on('ready', () => {
