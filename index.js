@@ -4,7 +4,7 @@ const low = require('lowdb') // local JSON flat-file database
 
 // set up the json database (required for karma system)
 const FileSync = require('lowdb/adapters/FileSync')
-const adapter = new FileSync('../db.json')
+const adapter = new FileSync('./db.json')
 const db = low(adapter)
 
 // import local config files
