@@ -8,7 +8,7 @@ At current, it only maintains the old bot's most popular features.
 
 ### Karma
 
-chipbot2 allows to upvote and downvote subjects.
+chipbot2 lets you upvote and downvote subjects, so you can compete over whether Other M sucks! (Just kidding - you can't upvote Other M.)
 
 To check the karma of an existing subject:
 
@@ -64,11 +64,11 @@ You can even add your own quotes with `.addquote`!
 .addquote <Brian Lindner> hey, is this thing on? <Hoodie> Nah.
 ```
 
-### Installation
+## Installation
 
 chipbot2 is a JavaScript app, which requires [Node.js](https://nodejs.org).
 
-Once you have that installed, clone this repository, and run this command to install this bot's dependencies:
+Once you have that installed, clone this repository, and run this command inside its folder to install the bot's dependencies:
 
 ```
 npm install
