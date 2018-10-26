@@ -42,4 +42,45 @@ chipbot2 allows you to get a random Kaomoji, courtesy of President Hoodie himsel
 .emote
 ```
 
-to get a random emote!
+to get a random emote! If you remember what the emote's ID is, you can also get it by that too. For instance, `.emote 1` returns "\m|♡|m/"!
+
+### Quotes
+
+chipbot2 can also keep a list of quotes! You can get a random quote by typing:
+
+```
+.quote
+```
+
+You can also get a quote by its ID number, just like emotes:
+
+```
+.quote 100
+```
+
+You can even add your own quotes with `.addquote`!
+
+```
+.addquote <Brian Lindner> hey, is this thing on? <Hoodie> Nah.
+```
+
+### Installation
+
+chipbot2 is a JavaScript app, which requires [Node.js](https://nodejs.org).
+
+Once you have that installed, clone this repository, and run this command to install this bot's dependencies:
+
+```
+npm install
+```
+
+Then, go ahead and make a file in the `config/` folder named `bot.json`, and place your Discord bot token in it like so:
+
+```json
+{
+  "token": "<your Discord bot token here>"
+}
+
+```
+
+After that, a simple `node index.js` or `npm start` will start the bot right up! You might want to use a program like [Nodemon](https://github.com/remy/nodemon/) or [PM2](https://github.com/Unitech/pm2) to keep the bot up in case it crashes.
