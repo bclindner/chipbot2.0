@@ -68,7 +68,7 @@ You can even add your own quotes with `.addquote`!
 
 chipbot2 is a JavaScript app, which requires [Node.js](https://nodejs.org).
 
-Once you have that installed, clone this repository, and run this command to install this bot's dependencies:
+Once you have that installed, clone this repository, and run this command inside its folder to install the bot's dependencies:
 
 ```
 npm install
