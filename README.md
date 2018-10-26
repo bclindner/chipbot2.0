@@ -8,7 +8,7 @@ At current, it only maintains the old bot's most popular features.
 
 ### Karma
 
-chipbot2 allows to upvote and downvote subjects.
+chipbot2 lets you upvote and downvote subjects, so you can compete over whether Other M sucks! (Just kidding - you can't upvote Other M.)
 
 To check the karma of an existing subject:
 
