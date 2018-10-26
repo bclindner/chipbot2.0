@@ -64,7 +64,7 @@ You can even add your own quotes with `.addquote`!
 .addquote <Brian Lindner> hey, is this thing on? <Hoodie> Nah.
 ```
 
-### Installation
+## Installation
 
 chipbot2 is a JavaScript app, which requires [Node.js](https://nodejs.org).
 
