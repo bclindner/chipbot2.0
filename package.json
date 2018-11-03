@@ -1,6 +1,6 @@
 {
   "name": "chipbot",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "discord port of the IRC chipbot for chiptunes=win",
   "main": "index.js",
   "author": "bclindner",
